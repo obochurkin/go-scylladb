@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  scylla-node1:
+    image: scylladb/scylla
+    container_name: scylla-node1
+    command: --seeds=scylla-node1,scylla-node2 --smp 1 --memory 750M --overprovisioned 1
+    ports: 
+      - "9042:9042"
+    expose:
+      - "9042"
+    networks:
+      default:
+
+  scylla-node2:
+    image: scylladb/scylla
+    container_name: scylla-node2
+    command: --seeds=scylla-node1,scylla-node2 --smp 1 --memory 750M --overprovisioned 1
+    networks:
+      default:
+
+  scylla-node3:
+    image: scylladb/scylla
+    container_name: scylla-node3
+    command: --seeds=scylla-node1,scylla-node2 --smp 1 --memory 750M --overprovisioned 1
+    networks:
+      default:
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.21.0.0/16
+         gateway: 172.21.0.1
