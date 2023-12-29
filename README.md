@@ -4,7 +4,7 @@
 - run scylladb locally:
 ```
 docker run --name scylla-node1 --hostname scylla-node1 -d scylladb/scylla
-docker exec -it some-scylla nodetool status 
+docker exec -it scylla-node1 nodetool status 
 ```
 - create a keyspace (configurate with 1 node):
 ```sql
@@ -20,7 +20,7 @@ docker exec -it scylla-node1 nodetool status
 - create a keyspace (configurate with 3 node):
 ```sql
 docker exec -it scylla-node1 cqlsh 172.21.0.2
-cqlsh> CREATE KEYSPACE mykeyspace WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'replication_factor' : 3};
+cqlsh> CREATE KEYSPACE mykeyspace WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'replication_factor' : 2};
 ```
 
 ### seed example data

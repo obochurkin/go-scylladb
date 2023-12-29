@@ -23,18 +23,16 @@ func GetHeartRateByPetChipID(ctx *gin.Context) {
 
 	session := internal.GetSession()
 
-	heartRate, err := SelectHeartRateByChipQuery(session, uuid)
+	data, err := SelectHeartRateByChipQuery(session, uuid)
 	if err != nil {
 		log.Printf("Query error: %v", err)
 		handleError(ctx, err)
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{
-		"petChipID": heartRate.ID,
-		"time":      heartRate.Time,
-		"heartRate": heartRate.HeartRate,
-	})
+	heartRate := newHeartRateV1ResponseDto(&data)
+
+	ctx.JSON(http.StatusOK, heartRate)
 }
 
 func AddHeartRateByPetChipID(ctx *gin.Context) {
@@ -64,18 +62,16 @@ func AddHeartRateByPetChipID(ctx *gin.Context) {
 	}
 
 	// Retrieve the inserted heart rate
-	heartRate, err := SelectHeartRateByChipQuery(session, dto.PetChipID)
+	data, err := SelectHeartRateByChipQuery(session, dto.PetChipID)
 	if err != nil {
 		log.Printf("Query error: %v", err)
 		handleError(ctx, err)
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{
-		"petChipID": heartRate.ID,
-		"time":      heartRate.Time,
-		"heartRate": heartRate.HeartRate,
-	})
+	heartRate := newHeartRateV1ResponseDto(&data)
+
+	ctx.JSON(http.StatusOK, heartRate)
 }
 
 func handleError(ctx *gin.Context, err error) {
