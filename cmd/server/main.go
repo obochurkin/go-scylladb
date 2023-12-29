@@ -5,6 +5,7 @@ import (
 
 	"github.com/obochurkin/go-scylladb/api/v1/health-check"
 	"github.com/obochurkin/go-scylladb/api/v1/heartrate_v1"
+	"github.com/obochurkin/go-scylladb/api/v1/heartrate_v2"
 	"github.com/obochurkin/go-scylladb/internal"
 	"github.com/obochurkin/go-scylladb/middlewares"
 )
@@ -21,7 +22,8 @@ func main() {
 	defer session.Close()
 
 	//init routes
-  healthCheck.SetupHealthCheckRoutes(r)
-	heartrate_v1.SetupHeartbeatV1Routes(r)
+  healthCheck.SetupRoutes(r)
+	heartrate_v1.SetupRoutes(r)
+  heartrate_v2.SetupRoutes(r)
 	r.Run(":8080")
 }

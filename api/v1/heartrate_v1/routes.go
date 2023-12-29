@@ -7,7 +7,7 @@ import (
 )
 
 // SetupRoutes initializes the application routes.
-func SetupHeartbeatV1Routes(router *gin.Engine) {
+func SetupRoutes(router *gin.Engine) {
 	v1 := router.Group("api/v1")
 	{
 		v1.GET("/heart-rate/:id", GetHeartRateByPetChipID)

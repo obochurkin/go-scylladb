@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "cfd43289-8bc3-40eb-bc3c-c56b3f7f796e",
+		"name": "go-scylladb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6186628"
+	},
+	"item": [
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/health-check",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"health-check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "v1/heartRateById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/heart-rate/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"heart-rate",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "a622803a-1ce3-4840-ae49-fdd6bbcf30e1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "v2/heartRateById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v2/heart-rate/:id?start-date=2023-12-29T02:22:31.922Z",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"heart-rate",
+						":id"
+					],
+					"query": [
+						{
+							"key": "end-date",
+							"value": "2023-12-29T02:26:30.921Z",
+							"disabled": true
+						},
+						{
+							"key": "start-date",
+							"value": "2023-12-29T02:22:31.922Z"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "a622803a-1ce3-4840-ae49-fdd6bbcf30e1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "v1/upsert heartRate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"petChipId\": \"a622803a-1ce3-4840-ae49-fdd6bbcf30e1\",\n    \"heartRete\": 67\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/heart-rate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"heart-rate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "v2/insert heartRate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"petChipId\": \"a622803a-1ce3-4840-ae49-fdd6bbcf30e1\",\n    \"heartRete\": 69\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v2/heart-rate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"heart-rate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
