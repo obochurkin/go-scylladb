@@ -32,7 +32,7 @@ func GetHeartRateByPetChipID(ctx *gin.Context) {
 
 	heartRate := newHeartRateV1ResponseDto(&data)
 
-	ctx.JSON(http.StatusOK, heartRate)
+	ctx.JSON(http.StatusOK, gin.H{"data": heartRate})
 }
 
 func AddHeartRateByPetChipID(ctx *gin.Context) {
@@ -71,7 +71,7 @@ func AddHeartRateByPetChipID(ctx *gin.Context) {
 
 	heartRate := newHeartRateV1ResponseDto(&data)
 
-	ctx.JSON(http.StatusOK, heartRate)
+	ctx.JSON(http.StatusOK, gin.H{"data": heartRate})
 }
 
 func handleError(ctx *gin.Context, err error) {
