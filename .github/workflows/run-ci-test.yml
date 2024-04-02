@@ -26,6 +26,9 @@ jobs:
       - name: Run tests
         run: go test -v -coverprofile=coverage.out ./...
 
+      - name: Convert coverage profile
+        run: go get github.com/modocache/gover && gover -v -coverprofile=coverage.out -output=coverage.txt  
+
       - name: Upload test coverage
         uses: actions/upload-artifact@v2
         with:
