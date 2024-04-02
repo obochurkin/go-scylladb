@@ -30,7 +30,7 @@ jobs:
         run: go test -v -coverprofile=coverage.out ./...
 
       - name: Convert coverage profile
-        run: gover -v -coverprofile=coverage.out -output=coverage.txt  
+        run: gover -coverprofile=coverage.out -output=coverage.txt  
 
       - name: Upload test coverage
         uses: actions/upload-artifact@v2
