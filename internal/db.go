@@ -61,7 +61,7 @@ func runMigrations(dbKeySpace string) {
 		KeyspaceName: dbKeySpace,
 	})
 	if err != nil {
-		log.Fatalf("could not create Cassandra migration driver: %w", err)
+		log.Fatalf("could not create Cassandra migration driver: %s", err)
 	}
 
 	m, err := migrate.NewWithDatabaseInstance(
