@@ -9,7 +9,10 @@ start:
 	go run cmd/server/main.go
 
 build:
-	go build cmd/server/main.go	
+	go build cmd/server/main.go
+
+test:
+	go test	-run=Test -v ./...
 
 # Run migrations
 migrate-up:

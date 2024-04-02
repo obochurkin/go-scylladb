@@ -51,3 +51,8 @@ cqlsh>CONSISTENCY ONE // one of the nodes should respond else failed
 ```
 make start
 ```
+
+- run tests
+```
+make test
+```

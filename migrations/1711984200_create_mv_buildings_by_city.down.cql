@@ -1,0 +1,1 @@
+DROP MATERIALIZED VIEW IF EXISTS building_by_city;
